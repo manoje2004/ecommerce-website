@@ -21,18 +21,36 @@
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
-            <li><a href="cart.html">Cart</a></li>
+            <li><a href="cart.html">Cart (<span id="cartCount">0</span>)</a></li>
         </ul>
+        <button id="darkModeBtn">🌙</button>
     </nav>
 </header>
 
 <section class="featured">
+
     <h2>All Products</h2>
 
+    <div class="filter-box">
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="men's clothing">Men's Clothing</option>
+            <option value="women's clothing">Women's Clothing</option>
+            <option value="electronics">Electronics</option>
+            <option value="jewelery">Jewellery</option>
+        </select>
+    </div>
+    <div id="loader">
+    <div class="spinner"></div>
+</div>
+
+<div class="product-grid" id="products"></div>
+
     <div class="product-grid" id="products"></div>
+
 </section>
 
 <script src="js/products.js"></script>
-
+<div id="toast">✅ Product Added Successfully!</div>
 </body>
 </html>

@@ -1,3 +1,4 @@
+const loader = document.getElementById("loader");
 const productContainer = document.getElementById("products");
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
@@ -8,7 +9,8 @@ fetch("https://fakestoreapi.com/products")
     .then(response => response.json())
     .then(data => {
         allProducts = data;
-        displayProducts(allProducts);
+        loader.style.display = "none";displayProducts(allProducts);
+        loader.style.display = "none";
     });
 
 function displayProducts(products) {
@@ -88,6 +90,11 @@ function addToCart(id) {
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    alert("Product Added Successfully!");
+const toast = document.getElementById("toast");
 
+toast.classList.add("show");
+
+setTimeout(() => {
+    toast.classList.remove("show");
+}, 2000);
 }
