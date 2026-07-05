@@ -89,6 +89,8 @@ function addToCart(id) {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    alert("Product Added Successfully!");
 
 const toast = document.getElementById("toast");
 
