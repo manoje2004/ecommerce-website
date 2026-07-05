@@ -5,11 +5,11 @@ const categoryFilter = document.getElementById("categoryFilter");
 let allProducts = [];
 
 fetch("https://fakestoreapi.com/products")
-.then(res => res.json())
-.then(data => {
-    allProducts = data;
-    displayProducts(allProducts);
-});
+    .then(response => response.json())
+    .then(data => {
+        allProducts = data;
+        displayProducts(allProducts);
+    });
 
 function displayProducts(products) {
 
@@ -18,20 +18,27 @@ function displayProducts(products) {
     products.forEach(product => {
 
         productContainer.innerHTML += `
-            <div class="card">
 
-                <img src="${product.image}" alt="${product.title}">
+        <div class="card">
 
-                <h3>${product.title}</h3>
+            <img src="${product.image}" alt="${product.title}">
 
-                <p>₹ ${Math.round(product.price * 85)}</p>
+            <h3>${product.title}</h3>
 
-                <button onclick="addToCart(${product.id})">
-                    Add to Cart
-                </button>
+            <p>₹ ${Math.round(product.price * 85)}</p>
 
-            </div>
+            <a href="product.html?id=${product.id}">
+                <button>View Details</button>
+            </a>
+
+            <button onclick="addToCart(${product.id})">
+                Add to Cart
+            </button>
+
+        </div>
+
         `;
+
     });
 
 }
@@ -59,6 +66,7 @@ function filterProducts() {
     }
 
     displayProducts(filtered);
+
 }
 
 function addToCart(id) {
@@ -67,9 +75,19 @@ function addToCart(id) {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    cart.push(product);
+    const existingProduct = cart.find(item => item.id === id);
+
+    if (existingProduct) {
+        existingProduct.quantity += 1;
+    } else {
+        cart.push({
+            ...product,
+            quantity: 1
+        });
+    }
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    alert("✅ Product added to cart!");
+    alert("Product Added Successfully!");
+
 }

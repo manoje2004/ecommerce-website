@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart | ShopEasy</title>
+    <title>Checkout | ShopEasy</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,25 +24,25 @@
 
 <section class="featured">
 
-    <h2>My Shopping Cart</h2>
+    <h2>Checkout</h2>
 
-    <div id="cartItems" class="product-grid">
+    <form class="checkout-form">
 
-    </div>
+        <input type="text" placeholder="Full Name" required>
 
-    <div class="cart-total">
-        <h2>Total : ₹ <span id="totalPrice">0</span></h2>
+        <input type="email" placeholder="Email Address" required>
 
-        <a href="checkout.html">
-    <button class="checkout-btn">
-        Proceed to Checkout
-    </button>
-</a>
-    </div>
+        <input type="text" placeholder="Phone Number" required>
+
+        <textarea placeholder="Delivery Address" rows="5" required></textarea>
+
+        <button type="submit">Place Order</button>
+
+    </form>
 
 </section>
 
-<script src="js/cart.js"></script>
+<script src="js/checkout.js"></script>
 
 </body>
 </html>
